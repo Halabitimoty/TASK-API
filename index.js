@@ -13,6 +13,9 @@ const database = mongoose.connect(process.env.MONGO_DB_URL, {
   useNewUrlParser: true,
 });
 
+const authroute = require("./app/routes/auth.route");
+const taskroute = require("./app/routes/task.route");
+
 database
   .then(() => {
     console.log("database-connected");
@@ -30,6 +33,9 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use("/v1/auth", authroute);
+app.use("/v1/task", taskroute);
 
 app.get("/", (req, res) => {
   res.send("Task Api");
