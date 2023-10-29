@@ -17,7 +17,7 @@ const isuserloggedin = (req, res, next) => {
       error: "user unauthorized!",
     });
   }
-  const decoded = jwt.verify(token, process.config.SECRET);
+  const decoded = jwt.verify(token, process.env.SECRET);
   req.decoded = decoded;
   next();
 };
