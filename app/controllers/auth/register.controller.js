@@ -13,7 +13,7 @@ const register = async (req, res) => {
       fullname,
       email,
       password,
-      role,
+      role: role.toLowerCase(),
       profilepicture,
     });
 
@@ -51,4 +51,4 @@ const register = async (req, res) => {
   }
 };
 
-module.exports = { register };
+module.exports = register;

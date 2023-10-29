@@ -32,7 +32,7 @@ const login = async (req, res) => {
       });
     }
 
-    const { fullname, email: useremail, _id, role } = userdetails;
+    const { email: useremail, _id, role } = userdetails;
 
     const token = jwt.sign(
       {
@@ -57,4 +57,4 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { login };
+module.exports = login;
