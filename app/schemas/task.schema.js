@@ -27,4 +27,4 @@ taskschema.plugin(paginate);
 
 const taskcollection = mongoose.model("task", taskschema);
 
-module.exports = taskcollection;
+module.exports = { taskcollection };
