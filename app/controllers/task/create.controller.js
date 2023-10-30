@@ -5,7 +5,6 @@ const createtask = async (req, res) => {
   try {
     const { userid } = req.decoded;
     const { title, description, published } = req.body;
-
     await createval.validateAsync({ title, description, published });
 
     const task = await taskcollection.create({

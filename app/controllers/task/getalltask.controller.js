@@ -21,10 +21,13 @@ const getalltask = async (req, res) => {
 const paginatetasks = async (req, res) => {
   try {
     const { limit, page } = req.params;
-    const data = await taskcollection.paginate({
-      limit: limit || 5,
-      page: page || 1,
-    });
+    const data = await taskcollection.paginate(
+      {},
+      {
+        limit: limit || 5,
+        page: page || 1,
+      }
+    );
 
     res.status(200).send({
       success: true,
@@ -44,11 +47,11 @@ const getusertask = async (req, res) => {
   try {
     const { userid } = req.decoded;
 
-    const data = await taskcollection.findById({ user: userid });
+    const data = await taskcollection.find({ createBy: userid });
 
     res.status(200).send({
       success: true,
-      message: "paginated tasks fetched successfully",
+      message: "all user tasks fetched successfully",
       data,
     });
   } catch (error) {
@@ -65,7 +68,7 @@ const paginateusertask = async (req, res) => {
     const { userid } = req.decoded;
 
     const data = await taskcollection.paginate(
-      { user: userid },
+      { createBy: userid },
       {
         limit: limit || 5,
         page: page || 1,

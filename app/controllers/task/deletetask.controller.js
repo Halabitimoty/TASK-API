@@ -52,9 +52,9 @@ const userdeletebyid = async (req, res) => {
     const { id } = req.params;
     const { userid } = req.decoded;
 
-    const task = taskcollection.findById(id);
+    const task = await taskcollection.findById(id);
 
-    if (userid !== task.id) {
+    if (userid !== task.createBy.toString()) {
       res.status(400).send({
         success: false,
         message: "you are not authorised to delete this task.",

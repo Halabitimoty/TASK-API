@@ -19,9 +19,9 @@ router.get("/get-all-task", isuserloggedin, getalltask);
 router.get("/paginate-task/:page?/:limit?", isuserloggedin, paginateusertask);
 router.get("/paginate-tasks/:page?/:limit?", isuserloggedin, paginatetasks);
 router.post("/create-task", isuserloggedin, createtask);
-router.patch("/update-task", isuserloggedin, updatetask);
+router.patch("/update-task/:id", isuserloggedin, updatetask);
 router.delete("/delete-user-task-id/:id", isuserloggedin, userdeletebyid);
 router.delete("/delete-task-id/:id", isuserloggedin, deletebyid);
-router.delete("/delete-all-task", adminonly, deleteall);
+router.delete("/delete-all-task", isuserloggedin, adminonly, deleteall);
 
 module.exports = router;

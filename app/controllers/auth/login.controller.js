@@ -46,6 +46,7 @@ const login = async (req, res) => {
     res.status(200).send({
       success: true,
       message: "login successful",
+      userid: _id,
       token,
     });
   } catch (error) {
