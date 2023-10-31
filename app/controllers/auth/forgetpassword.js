@@ -8,7 +8,7 @@ const forgetpassword = async (req, res) => {
   try {
     const { email } = req.body;
 
-    await forgetpasswordval.validateAsync(email);
+    await forgetpasswordval.validateAsync({ email });
 
     const user = await usercollection.findOne({ email });
 

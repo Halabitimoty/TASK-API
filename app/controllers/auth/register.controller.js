@@ -17,7 +17,9 @@ const register = async (req, res) => {
       profilepicture,
     });
 
-    const isUserPresent = await usercollection.findOne({ email });
+    const isUserPresent = await usercollection
+      .findOne({ email })
+      .maxTimeMS(20000);
 
     if (isUserPresent) {
       return res.status(409).send({
