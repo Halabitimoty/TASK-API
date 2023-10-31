@@ -3,7 +3,6 @@ const { usercollection } = require("../../schemas/user.schema");
 const { forgetpasswordcollection } = require("../../schemas/forgetpassword");
 const { smtp } = require("../../utilities/smtp");
 const { v4 } = require("uuid");
-const { emailformat } = require("../../utilities/emailformat");
 
 const forgetpassword = async (req, res) => {
   try {
@@ -28,7 +27,17 @@ const forgetpassword = async (req, res) => {
       token: uid,
     });
 
-    smtp.sendMail(emailformat);
+    smtp.sendMail({
+      to: email,
+      subject: "Password Reset",
+      html: `
+                <div>
+                    <h1>Password Reset</h1>
+                    <div>Click <a href="">here</a> to reset your password</div>
+                    <div>or use this UID = ${uid}</div>
+                </div>
+            `,
+    });
 
     res.status(200).send({
       success: true,
