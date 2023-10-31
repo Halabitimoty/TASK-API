@@ -42,3 +42,5 @@ const forgetpassword = async (req, res) => {
     });
   }
 };
+
+module.exports = forgetpassword;

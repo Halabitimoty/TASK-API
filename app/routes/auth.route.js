@@ -6,10 +6,12 @@ const {
   login,
   profile,
   register,
+  forgetpassword,
 } = require("../controllers/auth/auth.controller");
 
 router.post("/login", login);
 router.post("/register", register);
+router.post("/forgetpassword", forgetpassword);
 router.get("/profile", isuserloggedin, profile);
 
 module.exports = router;
