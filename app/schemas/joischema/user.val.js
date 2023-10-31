@@ -13,7 +13,15 @@ const registerval = Joi.object({
   profilepicture: Joi.string(),
 });
 
+const forgetpasswordval = Joi.object({
+  email: Joi.string().email().min(3).max(20).required().messages({
+    "string.email": "Your email is not valid",
+    "any.required": "'email' field is required",
+  }),
+});
+
 module.exports = {
   loginval,
   registerval,
+  forgetpasswordval,
 };
