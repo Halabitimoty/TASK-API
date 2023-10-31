@@ -10,7 +10,7 @@ const forgetpassword = async (req, res) => {
 
     await forgetpasswordval.validateAsync({ email });
 
-    const user = await usercollection.findOne({ email });
+    const user = await usercollection.findOne({ email }).maxTimeMS(20000);
 
     if (!user) {
       return res.status(404).send({
