@@ -20,8 +20,13 @@ const forgetpasswordval = Joi.object({
   }),
 });
 
+const resetpasswordval = Joi.object({
+  password: Joi.string().min(6).max(40).required().alphanum(),
+});
+
 module.exports = {
   loginval,
   registerval,
   forgetpasswordval,
+  resetpasswordval,
 };
