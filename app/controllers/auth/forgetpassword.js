@@ -33,7 +33,7 @@ const forgetpassword = async (req, res) => {
       html: `
                 <div>
                     <h1>Password Reset</h1>
-                    <div>Click <a href="">here</a> to reset your password</div>
+                    <div>Click <a href="http://localhost:6000/v1/auth/resetpassword">here</a> to reset your password</div>
                     <div>or use this UID = ${uid}</div>
                 </div>
             `,
