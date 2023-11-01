@@ -7,11 +7,13 @@ const {
   profile,
   register,
   forgetpassword,
+  resetpassword,
 } = require("../controllers/auth/auth.controller");
 
 router.post("/login", login);
 router.post("/register", register);
 router.post("/forgetpassword", forgetpassword);
+router.put("/resetpassword", resetpassword);
 router.get("/profile", isuserloggedin, profile);
 
 module.exports = router;
