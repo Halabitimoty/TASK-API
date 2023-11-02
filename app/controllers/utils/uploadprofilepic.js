@@ -15,9 +15,11 @@ const uploadprofilepic = async (req, res) => {
     });
     console.log(result.secure_url);
 
-    const userpics = usercollection.findByIdAndUpdate(userid, {
-      profilepicture: result.secure_url,
-    });
+    const userpics = await usercollection
+      .findByIdAndUpdate(userid, {
+        profilepicture: result.secure_url,
+      })
+      .maxTimeMS(30000);
 
     res.status(200).send({
       success: true,
