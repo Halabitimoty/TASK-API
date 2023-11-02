@@ -13,7 +13,6 @@ const uploadprofilepic = async (req, res) => {
     const result = await cloud.uploader.upload("public/" + filename, {
       folder: "taskpicture",
     });
-    console.log(result.secure_url);
 
     const userpics = await usercollection
       .findByIdAndUpdate(userid, {
